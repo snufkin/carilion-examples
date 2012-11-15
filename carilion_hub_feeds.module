@@ -1,0 +1,47 @@
+<?php
+
+function carilion_hub_feeds_block_info() {
+  $blocks = array();
+  $blocks['carilion_hub_feeds'] = array(
+    'info' => t('Carilion Hub Feed'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+function carilion_hub_feeds_block_view($delta = '') {
+  $block = array();
+  if ($delta == 'carilion_hub_feeds') {
+    $block['subject'] = t('Hub feed');
+    $block['content'] = carilion_hub_feeds_block_content();
+  }
+  return $block;
+}
+
+function carilion_hub_feeds_block_content() {
+  return views_embed_view('latest_articles', 'block');
+  // $age = 30;
+  // $data = array(
+  //   'name' => t('Joe Smith'),
+  //   'title' => t('Mr'),
+  //   'age' => t('My age is %age', array('%age' => $age)),
+  // );
+  // return theme('carilion_person', $data);
+}
+
+function carilion_hub_feeds_theme() {
+  return array(
+    'carilion_person' => array(
+      'variables' => array('name' => NULL, 'title' => NULL)
+    ),
+  );
+}
+
+function carilion_hub_feeds_carilion_person_preprocess($variables) {
+
+
+}
+
+function theme_carilion_person($variables) {
+  return $variables['title'] . ' ' . $variables['name'];
+}

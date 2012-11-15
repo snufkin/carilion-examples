@@ -1,0 +1,4 @@
+name = Carilion Hub Feeds
+description = Provide a customizable block for the intranet dashboard that pulls in a pre-configured View display.
+
+core = 7.x
